@@ -9,7 +9,6 @@ public class EventInteractable : MonoBehaviour, IInteractable
 
     private Renderer _renderer = null;
     private bool _isHighlight = false;
-    private bool _hasBeenUsed = false;
 
     private void Awake()
     {
@@ -19,11 +18,8 @@ public class EventInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (_hasBeenUsed)
-            return;
         if (OnInteract != null)
             OnInteract.Invoke();
-        _hasBeenUsed = true;
         StopHighlight();
     }
 
@@ -34,18 +30,11 @@ public class EventInteractable : MonoBehaviour, IInteractable
 
     public void StartHighlight()
     {
-        if (_hasBeenUsed)
-            return;
         _renderer.material.SetFloat("_opacity", 1f);
     }
 
     public void StopHighlight()
     {
         _renderer.material.SetFloat("_opacity", 0f);
-    }
-
-    public bool HasBeenUsed
-    {
-        get => _hasBeenUsed;
     }
 }
