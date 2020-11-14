@@ -13,8 +13,14 @@ public class EnemyRoutine : VersionedMonoBehaviour
 
     private void OnEnable()
     {
-        _ai = GetComponent<IAstarAI>();
+        if (points.Count == 0)
+        {
+            Debug.LogError(name += " need routine points", this);
+            enabled = false;
+            return;
+        }
 
+        _ai = GetComponent<IAstarAI>();
         if (_ai != null)
             _ai.onSearchPath += Update;
     }
