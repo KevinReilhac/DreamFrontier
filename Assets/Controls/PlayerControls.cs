@@ -33,6 +33,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""913de872-e028-4ecf-9453-955585325784"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -156,6 +164,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3c60062-88df-4ed9-88f4-0dea299755fa"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -166,6 +185,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_MainGameplay = asset.FindActionMap("MainGameplay", throwIfNotFound: true);
         m_MainGameplay_Movements = m_MainGameplay.FindAction("Movements", throwIfNotFound: true);
         m_MainGameplay_Interact = m_MainGameplay.FindAction("Interact", throwIfNotFound: true);
+        m_MainGameplay_Attack = m_MainGameplay.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -217,12 +237,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IMainGameplayActions m_MainGameplayActionsCallbackInterface;
     private readonly InputAction m_MainGameplay_Movements;
     private readonly InputAction m_MainGameplay_Interact;
+    private readonly InputAction m_MainGameplay_Attack;
     public struct MainGameplayActions
     {
         private @PlayerControls m_Wrapper;
         public MainGameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movements => m_Wrapper.m_MainGameplay_Movements;
         public InputAction @Interact => m_Wrapper.m_MainGameplay_Interact;
+        public InputAction @Attack => m_Wrapper.m_MainGameplay_Attack;
         public InputActionMap Get() { return m_Wrapper.m_MainGameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,6 +260,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_MainGameplayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_MainGameplayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_MainGameplayActionsCallbackInterface.OnInteract;
+                @Attack.started -= m_Wrapper.m_MainGameplayActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_MainGameplayActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_MainGameplayActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_MainGameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -248,6 +273,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -256,5 +284,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMovements(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

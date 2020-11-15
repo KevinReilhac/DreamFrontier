@@ -102,6 +102,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   interactionRange: 1
+  projectilePrefab: {fileID: 4339267053974916946, guid: 89b10eaaa63090844be28dbdf36d4483, type: 3}
+  chargeTime: 3
+  minSpeed: 1
+  maxSpeed: 3
+  minDist: 1
+  maxDist: 3
 --- !u!50 &3776640828945801839
 Rigidbody2D:
   serializedVersion: 4

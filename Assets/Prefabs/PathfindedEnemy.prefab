@@ -157,6 +157,26 @@ PrefabInstance:
       propertyPath: animMovement
       value: 
       objectReference: {fileID: 6468244022148849447}
+    - target: {fileID: 793254244421541605, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4010042466401162601}
+    - target: {fileID: 793254244421541605, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: ai
+      value: 
+      objectReference: {fileID: 4899012396841540026}
+    - target: {fileID: 5294316954344320568, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294316954344320568, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_Size.x
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294316954344320568, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_Size.y
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -216,6 +236,22 @@ PrefabInstance:
     - target: {fileID: 5294316954344320711, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_Name
       value: StaticEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180863170286566459, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180863170286566459, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180863170286566459, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180863170286566459, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}

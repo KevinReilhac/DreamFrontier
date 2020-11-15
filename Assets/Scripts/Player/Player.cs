@@ -8,6 +8,14 @@ public class Player : MonoBehaviour
     [Header("Gameplay")]
     [SerializeField] private float speed = 1f;
     [SerializeField] private float interactionRange = 1f;
+    [Header("Projectile")]
+    [SerializeField] private Projectile projectilePrefab = null;
+    [SerializeField] private float chargeTime = 3f;
+    [SerializeField] private float minSpeed = 0.3f;
+    [SerializeField] private float maxSpeed = 0.3f;
+    [SerializeField] private float minDist = 1f;
+    [SerializeField] private float maxDist = 3f;
+
 
     private Rigidbody2D _rigidbody = null;
     private PlayerControls _controls = null;
@@ -31,6 +39,7 @@ public class Player : MonoBehaviour
         _controls.MainGameplay.Movements.canceled += UpdateMove;
 
         _controls.MainGameplay.Interact.started += Interact;
+        _controls.MainGameplay.Attack.started += ThrowStar;
     }
 
     private void Update()
@@ -75,10 +84,16 @@ public class Player : MonoBehaviour
         _targetInteractable.Interact();
     }
 
+    private void ThrowStar(InputAction.CallbackContext context)
+    {
+        Projectile instance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        instance.Throw(maxDist, _currentdir, maxSpeed);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)_currentdir * interactionRange);
-        //Gizmos.DrawWireSphere(transform.position, interactionRange);
+        Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 }
