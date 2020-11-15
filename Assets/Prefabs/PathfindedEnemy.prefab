@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4899012396841540025}
   - component: {fileID: 4899012396841540026}
   - component: {fileID: 4899012396841540031}
+  - component: {fileID: 6468244022148849447}
   m_Layer: 0
   m_Name: PathfindedEnemy
   m_TagString: Untagged
@@ -113,6 +114,38 @@ MonoBehaviour:
   version: 1
   points: []
   waitAtPoint: 2
+--- !u!114 &6468244022148849447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4899012396841539972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b40e57f645e364e977259bb1fede8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4010042466401162601}
+--- !u!95 &4010042466401162601
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985191458101718991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea9a9df144f9c3347aa27f31e7f338bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5977930528971522312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,15 +199,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320711, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_Name
@@ -182,6 +215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+--- !u!1 &1985191458101718991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5294316954344320711, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+  m_PrefabInstance: {fileID: 5977930528971522312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1985191458101718833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
