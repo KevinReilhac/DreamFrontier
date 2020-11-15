@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animMovement: {fileID: 0}
   cornLight: {fileID: 5294316955308835615}
+  isBlinking: 0
+  blinkTime: 3
 --- !u!61 &7180863170286566459
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -198,8 +200,8 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.33
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.94522357, y: -1.3479218, z: 0}
-  - {x: 0.90439916, y: -1.3144822, z: 0}
+  - {x: -0.21010637, y: -2.228443, z: 0}
+  - {x: 0.2052226, y: -2.2209141, z: 0}
   - {x: 0.010010242, y: -0.0035262108, z: 0}
 --- !u!114 &5294316955308835614
 MonoBehaviour:
