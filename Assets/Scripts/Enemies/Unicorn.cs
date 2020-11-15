@@ -103,7 +103,7 @@ public class Unicorn : MonoBehaviour
 
     public void OnDetectPlayer()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Level1");
     }
 
 }
