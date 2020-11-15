@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5294316954344320569}
   - component: {fileID: 5294316954344320568}
+  - component: {fileID: 793254244421541605}
+  - component: {fileID: 7180863170286566459}
   m_Layer: 0
   m_Name: StaticEnemy
   m_TagString: Untagged
@@ -83,6 +85,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &793254244421541605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294316954344320711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f271df52aa4c96d42930591ef8695a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animMovement: {fileID: 0}
+  cornLight: {fileID: 5294316955308835615}
+--- !u!61 &7180863170286566459
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294316954344320711}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2, y: 1.22}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5294316955308835611
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +137,8 @@ GameObject:
   - component: {fileID: 5294316955308835615}
   - component: {fileID: 5294316955308835614}
   - component: {fileID: 5294316955308835613}
+  - component: {fileID: 5491487739736654650}
+  - component: {fileID: 9138835338853817677}
   m_Layer: 0
   m_Name: Freeform Light 2D
   m_TagString: Untagged
@@ -110,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5294316955308835611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.239, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5294316954344320569}
@@ -153,9 +197,9 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.33
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: 0.817604, y: -0.0975959, z: 0}
-  - {x: 0.8032236, y: 0.17219074, z: 0}
-  - {x: -0.005554412, y: 0.0110178245, z: 0}
+  - {x: -0.94522357, y: -1.3479218, z: 0}
+  - {x: 0.90439916, y: -1.3144822, z: 0}
+  - {x: 0.010010242, y: -0.0035262108, z: 0}
 --- !u!114 &5294316955308835614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +258,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 5294316955308835615}
   rainbowColor: {fileID: 5294316955308835614}
+--- !u!60 &5491487739736654650
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294316955308835611}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.94522357, y: -1.3479218}
+      - {x: 0.90439916, y: -1.3144822}
+      - {x: 0.010010242, y: -0.0035262108}
+--- !u!114 &9138835338853817677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294316955308835611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fab0716c68eb6a488dae0c4c94f3c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  polygoneCollider: {fileID: 5491487739736654650}
+  polygoneLight: {fileID: 5294316955308835615}

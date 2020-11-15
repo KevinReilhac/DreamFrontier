@@ -10,6 +10,10 @@ public class AnimMovements : MonoBehaviour
     private Vector2 _velocity = Vector2.zero;
     private Vector2 _lastPos = Vector2.zero;
 
+    public Vector2 GetDirection()
+    {
+        return _velocity;
+    }
 
     private void Update()
     {
