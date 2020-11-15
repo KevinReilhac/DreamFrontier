@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5294316954344320568}
   - component: {fileID: 793254244421541605}
   - component: {fileID: 7180863170286566459}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: StaticEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,8 @@ GameObject:
   - component: {fileID: 5294316955308835613}
   - component: {fileID: 5491487739736654650}
   - component: {fileID: 9138835338853817677}
-  m_Layer: 0
+  - component: {fileID: 4417414946091181082}
+  m_Layer: 2
   m_Name: Freeform Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,3 +301,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   polygoneCollider: {fileID: 5491487739736654650}
   polygoneLight: {fileID: 5294316955308835615}
+--- !u!114 &4417414946091181082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294316955308835611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ecb0346e9604a45afd3f4b6a2f5a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unicorn: {fileID: 793254244421541605}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class Unicorn : MonoBehaviour
 {
@@ -35,9 +36,9 @@ public class Unicorn : MonoBehaviour
         cornLight.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnDetectPlayer()
     {
-        if (collision.CompareTag("Player"))
-            Debug.LogWarning("Died");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 }
