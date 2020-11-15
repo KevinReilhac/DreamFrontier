@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,28 @@ public class Unicorn : MonoBehaviour
 {
     [SerializeField] AnimMovements animMovement = null;
     [SerializeField] Light2D cornLight = null;
+    [SerializeField] private bool isBlinking = false;
+    [SerializeField] [ShowIf("isBlinking")] private float blinkTime = 3f;
+
+    private void Awake()
+    {
+        if (isBlinking)
+            StartCoroutine(BlinkCoroutine());
+    }
+
+    private IEnumerator BlinkCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(blinkTime);
+            cornLight.enabled = !cornLight.enabled;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        StopCoroutine("BlinkCoroutine");
+    }
 
     private void Update()
     {
