@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     private Vector2 _currentdir = Vector2.zero;
     private IInteractable _targetInteractable = null;
+    private Vector2 _velocity = Vector2.zero;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         SearchInteractable();
+        _rigidbody.velocity = _velocity;
     }
     
     private void SearchInteractable()
@@ -63,7 +65,7 @@ public class Player : MonoBehaviour
 
         if (value != Vector2.zero)
             _currentdir = value;
-        _rigidbody.velocity = value * speed;
+        _velocity = value * speed;
     }
 
     private void Interact(InputAction.CallbackContext context)
