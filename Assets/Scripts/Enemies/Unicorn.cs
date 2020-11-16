@@ -48,7 +48,6 @@ public class Unicorn : MonoBehaviour
     private void Start()
     {
         SetDefaultDirection();
-        UpdateLightOrientation();
     }
 
     private IEnumerator BlinkCoroutine()
@@ -85,10 +84,6 @@ public class Unicorn : MonoBehaviour
             ai.maxSpeed = oldMaxSpeed;
         cornLight.enabled = true;
         animator.SetBool("isStun", false);
-    }
-
-    private void OnDestroy()
-    {
     }
 
     private void Update()

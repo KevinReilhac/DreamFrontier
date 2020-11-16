@@ -22,7 +22,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Movements"",
                     ""type"": ""Value"",
                     ""id"": ""ee88abf9-013e-4e1c-9f37-344e1dd8264a"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -156,6 +156,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c642d97a-c932-4711-b50c-7aff42032e0d"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movements"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""03eb04d6-15c4-4c77-a8bb-fca13e5ff8c0"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -167,8 +178,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5dca8674-dc7c-41e0-8476-a57a3220ad04"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b3c60062-88df-4ed9-88f4-0dea299755fa"",
                     ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87c467c7-34b6-40f4-b222-672257ae16ba"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
