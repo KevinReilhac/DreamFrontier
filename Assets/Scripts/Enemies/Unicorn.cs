@@ -8,16 +8,36 @@ using Pathfinding;
 
 public class Unicorn : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] AnimMovements animMovement = null;
     [SerializeField] Light2D cornLight = null;
+    [SerializeField] private AIPath ai;
+    [SerializeField] private Animator animator = null;
+    [Header("Gameplay")]
     [SerializeField] private bool isBlinking = false;
     [SerializeField] private float stunTime = 3f;
-    [SerializeField] private AIPath ai;
-    [SerializeField] private Vector2 defaultDirection = new Vector2(1, 0);
     [SerializeField] [ShowIf("isBlinking")] private float blinkTime = 3f;
-    [SerializeField] private Animator animator = null;
+
+    [SerializeField] [Dropdown("GetVectorStart")] [OnValueChanged("SetDefaultDirection")]
+    private Vector2 defaultDirection = new Vector2(1, 0);
+
+    private DropdownList<Vector2> GetVectorStart()
+    {
+        return new DropdownList<Vector2>()
+        {
+            { "Right",   Vector2.right },
+            { "Left",    Vector2.left },
+            { "Up",      Vector2.up },
+            { "Down",    Vector2.down },
+        };
+    }
 
     private bool _isStun = false;
+
+    private void OnEnable()
+    {
+        SetDefaultDirection();
+    }
 
     private void Awake()
     {
@@ -27,8 +47,7 @@ public class Unicorn : MonoBehaviour
 
     private void Start()
     {
-        animator.SetFloat("SpeedX", defaultDirection.x);
-        animator.SetFloat("SpeedY", defaultDirection.y);
+        SetDefaultDirection();
         UpdateLightOrientation();
     }
 
@@ -78,11 +97,16 @@ public class Unicorn : MonoBehaviour
             UpdateLightOrientation();
     }
 
-    private void UpdateLightOrientation()
+    private void SetDefaultDirection()
     {
-        if (cornLight == null || animMovement == null)
+        UpdateLightOrientation(defaultDirection);
+    }
+
+    private void UpdateLightOrientation(Vector2? dir = null)
+    {
+        if (cornLight == null)
             return;
-        Vector2 velocity = animMovement ? animMovement.GetDirection() : defaultDirection;
+        Vector2 velocity = dir.HasValue ? dir.Value : animMovement.GetDirection();
         Vector2 velocity4 = velocity.Get4Direction();
         
         float angle = 0;
