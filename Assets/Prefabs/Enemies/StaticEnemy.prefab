@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3463222925496698064}
   - component: {fileID: 1699498613119361262}
   - component: {fileID: 5087998181633549601}
+  - component: {fileID: 6980096279136824284}
   m_Layer: 2
   m_Name: StaticEnemy
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f271df52aa4c96d42930591ef8695a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animMovement: {fileID: 0}
+  animMovement: {fileID: 6980096279136824284}
   cornLight: {fileID: 5294316955308835615}
   ai: {fileID: 0}
   animator: {fileID: 3463222925496698064}
@@ -272,7 +273,21 @@ MonoBehaviour:
   - {x: -0.545, y: 0.575, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 215490
+  m_InstanceId: 451074
+--- !u!114 &6980096279136824284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294316954344320711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b40e57f645e364e977259bb1fede8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3463222925496698064}
+  isStatic: 1
 --- !u!1 &5294316955308835611
 GameObject:
   m_ObjectHideFlags: 0

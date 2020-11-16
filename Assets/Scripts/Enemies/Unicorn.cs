@@ -35,20 +35,16 @@ public class Unicorn : MonoBehaviour
 
     private bool _isStun = false;
 
-    private void OnEnable()
-    {
-        SetDefaultDirection();
-    }
-
     private void Awake()
     {
+        SetDefaultDirection();
         if (isBlinking)
             StartCoroutine(BlinkCoroutine());
     }
 
-    private void Start()
+    private void SetDefaultDirection()
     {
-        SetDefaultDirection();
+        animMovement.SetDirection(defaultDirection);
     }
 
     private IEnumerator BlinkCoroutine()
@@ -88,20 +84,14 @@ public class Unicorn : MonoBehaviour
 
     private void Update()
     {
-        if (animMovement)
-            UpdateLightOrientation();
+         UpdateLightOrientation();
     }
 
-    private void SetDefaultDirection()
-    {
-        UpdateLightOrientation(defaultDirection);
-    }
-
-    private void UpdateLightOrientation(Vector2? dir = null)
+    private void UpdateLightOrientation()
     {
         if (cornLight == null)
             return;
-        Vector2 velocity = dir.HasValue ? dir.Value : animMovement.GetDirection();
+        Vector2 velocity = animMovement.GetDirection();
         Vector2 velocity4 = velocity.Get4Direction();
         
         float angle = 0;

@@ -33,6 +33,9 @@ public class PauseMenu : MonoBehaviour
     {
         PlayerControls inputs = GameManager.instance.Controls;
 
+        if (inputs == null)
+            return;
+
         inputs.PauseMenu.Navigate.started -= Navigate;
         inputs.PauseMenu.Cancel.started -= Cancel;
         inputs.PauseMenu.Validate.started -= Validate;
