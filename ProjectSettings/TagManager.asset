@@ -45,12 +45,15 @@ TagManager:
   - name: Floor
     uniqueID: 2107674033
     locked: 0
+  - name: Walls
+    uniqueID: 2837202147
+    locked: 0
   - name: Player
     uniqueID: 2318308271
     locked: 0
   - name: Enemy
     uniqueID: 1173472305
     locked: 0
-  - name: Walls
-    uniqueID: 2837202147
+  - name: FakeWalls
+    uniqueID: 3992959465
     locked: 0

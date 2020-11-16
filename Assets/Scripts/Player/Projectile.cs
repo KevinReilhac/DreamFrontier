@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
 
     public void Throw(float distance, Vector2 direction, float speed)
     {
-        Debug.LogError(speed);
         dir = direction;
         StartCoroutine(MoveCoroutine(distance, direction, speed));
     }
@@ -41,7 +40,6 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
-        print("explode");
         Destroy(gameObject);
     }
 
