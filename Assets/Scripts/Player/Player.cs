@@ -29,12 +29,20 @@ public class Player : MonoBehaviour
     private bool _canMove = false;
     private float? timeStartCharge = null;
     private Color _defaultLightColor = Color.white;
+    private bool _isDead = false;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _defaultLightColor = light2d.color;
         SetupControls();
+    }
+
+    public void Kill()
+    {
+        _isDead = true;
+        _canMove = false;
+        _rigidbody.velocity = Vector2.zero;
     }
 
     private void SetupControls()
@@ -77,6 +85,7 @@ public class Player : MonoBehaviour
         light2d.color = Color.Lerp(_defaultLightColor, chargedLightColor, GetChargeState());
         animator.SetFloat("chargeVal", GetChargeState());
         animator.SetBool("isCharge", timeStartCharge.HasValue);
+        animator.SetBool("isDead", _isDead);
     }
     
     private void SearchInteractable()

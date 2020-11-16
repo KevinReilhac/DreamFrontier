@@ -122,6 +122,10 @@ public class Unicorn : MonoBehaviour
 
     public void OnDetectPlayer()
     {
+        animator.SetBool("isAngry", true);
+        if (ai)
+            ai.maxSpeed = 0f;
+        GameManager.instance.GetPlayer().Kill();
         GameManager.instance.GetSceneManager().ReloadScene();
         GameManager.instance.AddDeath();
     }
