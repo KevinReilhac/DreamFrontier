@@ -100,12 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e69a6fcb3dacc4c986bbfc5ecff689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8660482951058403489}
+  light2d: {fileID: 3776640829964102081}
+  chargedLightColor: {r: 1, g: 0.74113107, b: 0, a: 1}
   speed: 1.65
   interactionRange: 1
   projectilePrefab: {fileID: 4339267053974916946, guid: 89b10eaaa63090844be28dbdf36d4483, type: 3}
   chargeTime: 3
-  minSpeed: 1
-  maxSpeed: 3
+  minSpeed: 5
+  maxSpeed: 8
   minDist: 1
   maxDist: 3
 --- !u!50 &3776640828945801839

@@ -66,7 +66,6 @@ public class Projectile : MonoBehaviour
 
     private void FadeOut()
     {
-        print("fade out");
         Destroy(gameObject);
     }
 
