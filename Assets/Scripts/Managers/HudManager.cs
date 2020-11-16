@@ -8,6 +8,15 @@ public class HudManager : Manager<HudManager>
     [SerializeField] private TextMeshProUGUI deathCount;
     [SerializeField] private TextMeshProUGUI starCount;
 
+
+    private void Awake()
+    {
+        if (_instance != null)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(this);
+    }
+
     public void SetDeathCount(int count)
     {
         deathCount.text = count.ToString();

@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class Manager<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T _instance = null;
+    protected static T _instance = null;
     private static bool m_ShuttingDown = false;
     private static object m_Lock = new object();
 
