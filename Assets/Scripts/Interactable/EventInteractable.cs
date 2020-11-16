@@ -9,6 +9,7 @@ public class EventInteractable : MonoBehaviour, IInteractable
 
     private Renderer _renderer = null;
     private bool _isHighlight = false;
+    protected bool _canUse = true;
 
     private void Awake()
     {
@@ -16,8 +17,10 @@ public class EventInteractable : MonoBehaviour, IInteractable
         StopHighlight();
     }
 
-    public void Interact()
+    virtual public void Interact()
     {
+        if (!_canUse)
+            return;
         if (OnInteract != null)
             OnInteract.Invoke();
         StopHighlight();
@@ -28,13 +31,13 @@ public class EventInteractable : MonoBehaviour, IInteractable
         return (_isHighlight);
     }
 
-    public void StartHighlight()
+    public virtual void StartHighlight()
     {
-        _renderer.material.SetFloat("_opacity", 1f);
+        _renderer?.material.SetFloat("_opacity", 1f);
     }
 
-    public void StopHighlight()
+    public virtual void StopHighlight()
     {
-        _renderer.material.SetFloat("_opacity", 0f);
+        _renderer?.material.SetFloat("_opacity", 0f);
     }
 }
