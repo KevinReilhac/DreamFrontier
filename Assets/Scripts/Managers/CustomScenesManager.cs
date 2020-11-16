@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CustomScenesManager : Manager<CustomScenesManager>
+public class CustomScenesManager : MonoBehaviour
 {
     [SerializeField] private RectTransform fadeImage = null;
     [SerializeField] private float fadeTime = 1f;
 
     private bool isInTransition = false;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
+    private bool isLoad = false;
 
     private void Start()
     {
@@ -33,17 +29,14 @@ public class CustomScenesManager : Manager<CustomScenesManager>
 
     public void LoadScene(int sceneId)
     {
+        if (isLoad)
+            return;
         StartCoroutine(LoadSceneCoroutine(sceneId));
     }
 
     private IEnumerator LoadSceneCoroutine(int sceneId)
     {
-        // The Application loads the Scene in the background as the current Scene runs.
-        // This is particularly good for creating loading screens.
-        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-        // a sceneBuildIndex of 1 as shown in Build Settings.
-
-
+        isLoad = true;
         InTransition();
         while (isInTransition)
             yield return null;
@@ -51,6 +44,7 @@ public class CustomScenesManager : Manager<CustomScenesManager>
         while (!asyncLoad.isDone)
             yield return null;
         OutTransition();
+        isLoad = true;
     }
 
     private void InTransition()

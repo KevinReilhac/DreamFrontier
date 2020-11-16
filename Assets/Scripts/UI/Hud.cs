@@ -3,19 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HudManager : Manager<HudManager>
+public class Hud : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI deathCount;
     [SerializeField] private TextMeshProUGUI starCount;
 
-
-    private void Awake()
-    {
-        if (_instance != null)
-            Destroy(gameObject);
-        else
-            DontDestroyOnLoad(this);
-    }
+    [SerializeField] public PauseMenu PauseMenu = null;
 
     public void SetDeathCount(int count)
     {

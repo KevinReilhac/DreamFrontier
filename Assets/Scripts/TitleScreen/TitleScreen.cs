@@ -8,10 +8,10 @@ using UnityEngine.InputSystem;
 public class TitleScreen : MonoBehaviour
 {
     [SerializeField] private Image pressStart = null;
-    private PlayerControls _inputs;
 
     void Start()
     {
+        GameManager.instance.Init();
         SetupInput();
         SetupPressStartAnim();
     }
@@ -23,15 +23,12 @@ public class TitleScreen : MonoBehaviour
 
     private void SetupInput()
     {
-        _inputs = new PlayerControls();
-        _inputs.Enable();
-
-        _inputs.MainGameplay.Interact.performed += Load;
+        GameManager.instance.Controls.MainGameplay.Interact.performed += Load;
     }
 
     private void Load(InputAction.CallbackContext context)
     {
-        _inputs.MainGameplay.Interact.performed -= Load;
-        CustomScenesManager.instance.LoadNextScene();
+        GameManager.instance.Controls.MainGameplay.Interact.performed -= Load;
+        GameManager.instance.GetSceneManager().LoadNextScene();
     }
 }

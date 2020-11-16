@@ -122,7 +122,7 @@ public class Unicorn : MonoBehaviour
 
     public void OnDetectPlayer()
     {
-        CustomScenesManager.instance.ReloadScene();
+        GameManager.instance.GetSceneManager().ReloadScene();
         GameManager.instance.AddDeath();
     }
 

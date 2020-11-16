@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
 
 
     private Rigidbody2D _rigidbody = null;
-    private PlayerControls _controls = null;
 
     private Vector2 _currentdir = Vector2.zero;
     private IInteractable _targetInteractable = null;
@@ -32,14 +31,14 @@ public class Player : MonoBehaviour
 
     private void SetupControls()
     {
-        _controls = new PlayerControls();
-        _controls.Enable();
+        PlayerControls controls = GameManager.instance.Controls;
+        controls.Enable();
 
-        _controls.MainGameplay.Movements.performed += UpdateMove;
-        _controls.MainGameplay.Movements.canceled += UpdateMove;
+        controls.MainGameplay.Movements.performed += UpdateMove;
+        controls.MainGameplay.Movements.canceled += UpdateMove;
 
-        _controls.MainGameplay.Interact.started += Interact;
-        _controls.MainGameplay.Attack.started += ThrowStar;
+        controls.MainGameplay.Interact.started += Interact;
+        controls.MainGameplay.Attack.started += ThrowStar;
     }
 
     private void Update()

@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Manager<T> : MonoBehaviour where T : MonoBehaviour
 {
-    protected static T _instance = null;
+    protected static T _instance { get; set; }
     private static bool m_ShuttingDown = false;
     private static object m_Lock = new object();
 
@@ -27,12 +26,21 @@ public class Manager<T> : MonoBehaviour where T : MonoBehaviour
             {
                 if (_instance == null)
                 {
+                    // Search for existing instance.
                     _instance = (T)FindObjectOfType(typeof(T));
 
+                    // Create new instance if one doesn't already exist.
                     if (_instance == null)
                     {
-                        _instance = new GameObject(GetGameObjectName(typeof(T)), typeof(T)).GetComponent<T>();
-                        _instance.transform.SetSiblingIndex(1);
+                        // Need to create a new GameObject to attach the singleton to.
+                        var singletonObject = new GameObject();
+                        _instance = singletonObject.AddComponent<T>();
+                        singletonObject.name = typeof(T).ToString() + " (Singleton)";
+
+                        // Make instance persistent.
+                        //DontDestroyOnLoad(singletonObject);
+
+                        //Debug.LogError("Create new instance of " + typeof(T));
                     }
                 }
 
@@ -41,20 +49,27 @@ public class Manager<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private static string GetGameObjectName(System.Type classType)
-    {
-        return (ObjectNames.NicifyVariableName(classType.ToString()));
-    }
-
 
     private void OnApplicationQuit()
     {
         m_ShuttingDown = true;
     }
 
+
     private void OnDestroy()
     {
+        if (_instance == this)
+            return;
         m_ShuttingDown = true;
         _instance = null;
     }
+
+    private void Awake()
+    {
+        xAwake();
+    }
+
+    protected virtual void xAwake() { }
+
+    public virtual void Init() { }
 }
