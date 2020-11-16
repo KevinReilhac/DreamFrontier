@@ -21,6 +21,11 @@ public class CustomScenesManager : Manager<CustomScenesManager>
             OutTransition();
     }
 
+    public void ReloadScene()
+    {
+        LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void LoadNextScene()
     {
         LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

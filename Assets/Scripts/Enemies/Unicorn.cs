@@ -21,6 +21,7 @@ public class Unicorn : MonoBehaviour
     [SerializeField] [Dropdown("GetVectorStart")] [OnValueChanged("SetDefaultDirection")]
     private Vector2 defaultDirection = new Vector2(1, 0);
 
+
     private DropdownList<Vector2> GetVectorStart()
     {
         return new DropdownList<Vector2>()
@@ -63,7 +64,6 @@ public class Unicorn : MonoBehaviour
 
     public void Stun()
     {
-        Debug.LogWarning("AAAA");
         StartCoroutine(StunCoroutine());
     }
 
@@ -122,7 +122,8 @@ public class Unicorn : MonoBehaviour
 
     public void OnDetectPlayer()
     {
-        SceneManager.LoadScene("Level1");
+        CustomScenesManager.instance.ReloadScene();
+        GameManager.instance.AddDeath();
     }
 
 }

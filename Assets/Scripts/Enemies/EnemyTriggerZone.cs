@@ -6,32 +6,36 @@ public class EnemyTriggerZone : MonoBehaviour
 {
     [SerializeField] private Unicorn unicorn = null;
 
-    private GameObject target = null;
-    private Vector2 direction = Vector2.zero;
+    private GameObject _target = null;
+    private Vector2 _direction = Vector2.zero;
+    private bool _isPlayerDetected = false;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (_isPlayerDetected)
+            return;
         if (collision.CompareTag("Player"))
         {
-            target = collision.gameObject;
-            if (RaycastTest(target))
-            unicorn.OnDetectPlayer();
+            _target = collision.gameObject;
+            if (RaycastTest(_target))
+                unicorn.OnDetectPlayer();
+            _isPlayerDetected = true;
         }
     }
 
     private bool RaycastTest(GameObject obj)
     {
-        direction = (obj.transform.position - transform.position).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+        _direction = (obj.transform.position - transform.position).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction);
 
         return (hit.collider.gameObject == obj);
     }
 
     private void OnDrawGizmos()
     {
-        if (!target)
+        if (!_target)
             return;
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, (transform.position + (Vector3)direction) * 2);
+        Gizmos.DrawLine(transform.position, (transform.position + (Vector3)_direction) * 2);
     }
 }
