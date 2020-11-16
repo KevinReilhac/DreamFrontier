@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
 
     private void StartCharge(InputAction.CallbackContext context)
     {
+        if (!GameManager.instance.HaveStar())
+            return;
         timeStartCharge = Time.time;
         _canMove = false;
     }
@@ -115,6 +117,9 @@ public class Player : MonoBehaviour
 
     private void ThrowStar(InputAction.CallbackContext context)
     {
+        if (!GameManager.instance.HaveStar())
+            return;
+        GameManager.instance.RemoveStar();
         timeStartCharge = null;
         _canMove = true;
         animator.SetTrigger("throw");

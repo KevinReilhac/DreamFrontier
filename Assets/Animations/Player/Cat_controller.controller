@@ -119,7 +119,7 @@ BlendTree:
     m_DirectBlendParameter: SpeedX
     m_Mirror: 0
   m_BlendParameter: SpeedX
-  m_BlendParameterY: SpeedX
+  m_BlendParameterY: SpeedY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
