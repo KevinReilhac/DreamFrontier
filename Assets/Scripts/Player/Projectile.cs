@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Projectile : MonoBehaviour
 {
@@ -32,9 +33,10 @@ public class Projectile : MonoBehaviour
        {
            unicorn.Stun();
        }
-        
+        if (collision.GetComponent<Light2D>())
+            return;
        if (!collision.CompareTag("Player"))
-        Explode();
+            Explode();
     }
 
     private void Explode()
