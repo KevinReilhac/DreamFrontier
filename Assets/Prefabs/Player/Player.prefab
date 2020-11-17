@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8660482951058403489}
+  isStatic: 0
 --- !u!58 &8214324158931408440
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_Color: {r: 0.27450982, g: 0.7803922, b: 0.20392159, a: 1}
   m_Intensity: 5
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000b18da07daf932e8a31c4f145e3441ca9
+  m_ApplyToSortingLayers: 00000000b18da07de3441ca9af932e8a31c4f145e9b9ffed
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
