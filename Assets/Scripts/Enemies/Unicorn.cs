@@ -49,7 +49,6 @@ public class Unicorn : MonoBehaviour
 
     private IEnumerator BlinkCoroutine()
     {
-        yield return new WaitForSeconds(Random.Range(0, 2f));
         while (true)
         {
             yield return new WaitForSeconds(blinkTime);

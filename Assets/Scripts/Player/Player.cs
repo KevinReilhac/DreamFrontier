@@ -125,6 +125,8 @@ public class Player : MonoBehaviour
 
     private void UpdateMove(InputAction.CallbackContext context)
     {
+        if (!_canMove)
+            return;
         Vector2 value = context.ReadValue<Vector2>().Get4Direction();
 
         if (value != Vector2.zero)
