@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private Vector2 _currentdir = Vector2.zero;
     private IInteractable _targetInteractable = null;
     private Vector2 _velocity = Vector2.zero;
-    private bool _canMove = false;
+    private bool _canMove = true;
     private float? timeStartCharge = null;
     private Color _defaultLightColor = Color.white;
     private bool _isDead = false;
