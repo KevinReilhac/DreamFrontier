@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer = null;
     [SerializeField] private TrailRenderer trailRenderer = null;
-    [SerializeField] private ParticleSystem particleSystem = null;
+    [SerializeField] private ParticleSystem particles = null;
     public void Throw(float distance, Vector2 direction, float speed)
     {
         SetAngle(direction);
@@ -55,9 +55,9 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
-        particleSystem.transform.parent = null;
-        particleSystem.Play();
-        Destroy(particleSystem.gameObject, 2f);
+        particles.transform.parent = null;
+        particles.Play();
+        Destroy(particles.gameObject, 2f);
         Destroy(gameObject);
     }
 
