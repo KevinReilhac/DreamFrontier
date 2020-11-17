@@ -16,7 +16,6 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.SetActive(false);
         SetupInputs();
     }
 
@@ -99,6 +98,8 @@ public class PauseMenu : MonoBehaviour
 
     private void ReturnToTitle()
     {
+        if (isActiveAndEnabled)
+            return;
         Time.timeScale = 1;
         GameManager.instance.DeathCount = 0;
         GameManager.instance.GetSceneManager().LoadScene(0);
@@ -107,8 +108,20 @@ public class PauseMenu : MonoBehaviour
         GameManager.instance.Controls.MainGameplay.Enable();
     }
 
+    private void OnEnable()
+    {
+        GameManager.instance.Controls.PauseMenu.Enable();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.Controls.PauseMenu.Disable();
+    }
+
     private void Validate(InputAction.CallbackContext context)
     {
+        if (!isActiveAndEnabled)
+            return;
         if (_isShowControls)
         {
             HideControls();

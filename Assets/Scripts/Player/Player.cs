@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     {
         PlayerControls controls = GameManager.instance.Controls;
 
+
         controls.MainGameplay.Movements.performed -= UpdateMove;
         controls.MainGameplay.Movements.canceled -= UpdateMove;
 
