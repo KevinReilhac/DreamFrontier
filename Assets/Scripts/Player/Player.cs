@@ -98,8 +98,11 @@ public class Player : MonoBehaviour
     private void UpdateAnimation()
     {
         light2d.color = Color.Lerp(_defaultLightColor, chargedLightColor, GetChargeState());
-        animator.SetFloat("chargeVal", GetChargeState());
-        animator.SetBool("isCharge", timeStartCharge.HasValue);
+        animator.SetFloat("SpeedX", _currentdir.x);
+        animator.SetFloat("SpeedY", _currentdir.y);
+        animator.SetBool("Idle", _rigidbody.velocity.magnitude < 0.2f || !_canMove);
+        animator.SetFloat("chargeVal", GetChargeState());;
+        animator.SetBool("isCharge", timeStartCharge.HasValue);;
         animator.SetBool("isDead", _isDead);
     }
     
@@ -125,13 +128,11 @@ public class Player : MonoBehaviour
 
     private void UpdateMove(InputAction.CallbackContext context)
     {
-        if (!_canMove)
-            return;
         Vector2 value = context.ReadValue<Vector2>().Get4Direction();
 
         if (value != Vector2.zero)
             _currentdir = value;
-        _velocity = value * speed;
+        _velocity = value * speed * (_canMove ? 1 : 0);
     }
 
     private void Interact(InputAction.CallbackContext context)
