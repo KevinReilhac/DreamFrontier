@@ -10,6 +10,12 @@ public class Hud : MonoBehaviour
 
     [SerializeField] public PauseMenu PauseMenu = null;
 
+    private void Start()
+    {
+        SetDeathCount(GameManager.instance.DeathCount);
+        SetStarCount(GameManager.instance.StarCount);
+    }
+
     public void SetDeathCount(int count)
     {
         deathCount.text = count.ToString();

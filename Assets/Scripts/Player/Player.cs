@@ -58,6 +58,18 @@ public class Player : MonoBehaviour
         controls.MainGameplay.Attack.canceled += ThrowStar;
     }
 
+    private void OnDestroy()
+    {
+        PlayerControls controls = GameManager.instance.Controls;
+
+        controls.MainGameplay.Movements.performed -= UpdateMove;
+        controls.MainGameplay.Movements.canceled -= UpdateMove;
+
+        controls.MainGameplay.Interact.started -= Interact;
+        controls.MainGameplay.Attack.performed -= StartCharge;
+        controls.MainGameplay.Attack.canceled -= ThrowStar;
+    }
+
     private void StartCharge(InputAction.CallbackContext context)
     {
         if (!GameManager.instance.HaveStar())

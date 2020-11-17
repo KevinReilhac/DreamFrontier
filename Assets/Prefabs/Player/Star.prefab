@@ -4986,7 +4986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7709105873646850438}
   trailRenderer: {fileID: 296055682112412569}
-  particleSystem: {fileID: 8910418090992832244}
+  particles: {fileID: 8910418090992832244}
 --- !u!58 &4690101594420981939
 CircleCollider2D:
   m_ObjectHideFlags: 0
