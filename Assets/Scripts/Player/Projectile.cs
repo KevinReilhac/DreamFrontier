@@ -44,15 +44,12 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Unicorn unicorn = collision.GetComponent<Unicorn>();
+        collision.GetComponent<Unicorn>()?.Stun();
+        collision.GetComponent<IInteractable>()?.Interact();
 
-       if (unicorn)
-       {
-           unicorn.Stun();
-       }
         if (collision.GetComponent<Light2D>())
             return;
-       if (!collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player"))
             Explode();
     }
 
