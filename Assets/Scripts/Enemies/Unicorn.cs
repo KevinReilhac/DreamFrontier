@@ -116,8 +116,6 @@ public class Unicorn : MonoBehaviour
         if (ai)
             ai.maxSpeed = 0f;
         GameManager.instance.GetPlayer().Kill();
-        GameManager.instance.GetSceneManager().ReloadScene();
-        GameManager.instance.AddDeath();
     }
 
 }

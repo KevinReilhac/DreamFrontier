@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     {
         _isDead = true;
         _canMove = false;
+        GameManager.instance.AddDeath();
+        GameManager.instance.StarCount = 0;
+        GameManager.instance.GetSceneManager().ReloadScene();
         _rigidbody.velocity = Vector2.zero;
     }
 
