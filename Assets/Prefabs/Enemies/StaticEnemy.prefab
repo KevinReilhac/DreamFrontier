@@ -106,9 +106,9 @@ MonoBehaviour:
   ai: {fileID: 0}
   animator: {fileID: 3463222925496698064}
   isBlinking: 0
-  stunTime: 3
+  stunTime: 5
   blinkTime: 3
-  defaultDirection: {x: 0, y: 1}
+  defaultDirection: {x: 0, y: -1}
 --- !u!61 &7180863170286566459
 BoxCollider2D:
   m_ObjectHideFlags: 0
