@@ -156,6 +156,7 @@ public class Player : MonoBehaviour
     {
         float state = GetChargeState();
         yield return new WaitForSeconds(0.3f);
+        _canMove = true;
         Projectile instance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         instance.Throw(Mathf.Lerp(minDist, maxDist, 1 - state), _currentdir, Mathf.Lerp(minSpeed, maxSpeed, 1 - state));
         
