@@ -10,10 +10,14 @@ public class ColliderFromLight : MonoBehaviour
     [SerializeField] private PolygonCollider2D polygoneCollider = null;
     [SerializeField] private Light2D polygoneLight = null;
 
+    private void Start()
+    {
+        UpdateCollider();
+    }
+
     private void Update()
     {
         polygoneCollider.enabled = polygoneLight.enabled;
-        UpdateCollider();
     }
 
     [Button("Update")]

@@ -12,6 +12,7 @@ public class TitleScreen : MonoBehaviour
     void Start()
     {
         GameManager.instance.Init();
+        GameManager.instance.DeathCount = 0;
         SetupInput();
         SetupPressStartAnim();
     }

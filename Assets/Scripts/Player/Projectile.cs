@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer = null;
     [SerializeField] private TrailRenderer trailRenderer = null;
     [SerializeField] private ParticleSystem particles = null;
+
+    private bool hasHit = false;
     public void Throw(float distance, Vector2 direction, float speed)
     {
         SetAngle(direction);
@@ -43,14 +45,18 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (hasHit)
+            return;
         collision.GetComponent<Unicorn>()?.Stun();
         collision.GetComponent<IInteractable>()?.Interact();
 
         if (collision.GetComponent<Light2D>())
             return;
         if (!collision.CompareTag("Player"))
+        {
+            hasHit = true;
             Explode();
+        }
     }
 
     private void Explode()
