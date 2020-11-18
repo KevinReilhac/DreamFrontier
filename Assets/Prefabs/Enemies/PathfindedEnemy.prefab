@@ -80,7 +80,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 2.75
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -89,9 +89,9 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: 1
+  maxAcceleration: 2.75
   rotationSpeed: 360
-  slowdownDistance: 1
+  slowdownDistance: 0.3
   pickNextWaypointDist: 1
   endReachedDistance: 0.44
   alwaysDrawGizmos: 1
@@ -137,6 +137,10 @@ PrefabInstance:
       value: -1277726
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -149,6 +153,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -158,14 +166,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
