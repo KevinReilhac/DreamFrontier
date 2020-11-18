@@ -9,6 +9,7 @@ public class Hud : MonoBehaviour
     [SerializeField] private TextMeshProUGUI starCount;
 
     [SerializeField] public PauseMenu PauseMenu = null;
+    [SerializeField] public MobileInputs MobileInputs = null;
 
     private void Start()
     {

@@ -48,39 +48,6 @@ public class Player : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
     }
 
-    private void SetupControls()
-    {
-        PlayerControls controls = GameManager.instance.Controls;
-        controls.Enable();
-
-        controls.MainGameplay.Movements.performed += UpdateMove;
-        controls.MainGameplay.Movements.canceled += UpdateMove;
-
-        controls.MainGameplay.Interact.started += Interact;
-        controls.MainGameplay.Attack.performed += StartCharge;
-        controls.MainGameplay.Attack.canceled += ThrowStar;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerControls controls = GameManager.instance.Controls;
-
-
-        controls.MainGameplay.Movements.performed -= UpdateMove;
-        controls.MainGameplay.Movements.canceled -= UpdateMove;
-
-        controls.MainGameplay.Interact.started -= Interact;
-        controls.MainGameplay.Attack.performed -= StartCharge;
-        controls.MainGameplay.Attack.canceled -= ThrowStar;
-    }
-
-    private void StartCharge(InputAction.CallbackContext context)
-    {
-        if (!GameManager.instance.HaveStar())
-            return;
-        timeStartCharge = Time.time;
-        _canMove = false;
-    }
 
     private float GetChargeState()
     {
@@ -91,6 +58,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.isPhonePlay)
+            UpdateMove(GameManager.instance.GetHUD().MobileInputs.GetStickValue());
         SearchInteractable();
         _rigidbody.velocity = _velocity;
         UpdateAnimation();
@@ -127,23 +96,43 @@ public class Player : MonoBehaviour
         _targetInteractable = newInteractable;
     }
 
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)_currentdir * interactionRange);
+        Gizmos.DrawWireSphere(transform.position, interactionRange);
+    }
+
+    #region INPUTS_HANDLING
     private void UpdateMove(InputAction.CallbackContext context)
     {
-        Vector2 value = context.ReadValue<Vector2>().Get4Direction();
+        UpdateMove(context.ReadValue<Vector2>().Get4Direction());
+    }
 
+    private void UpdateMove(Vector2 value)
+    {
         if (value != Vector2.zero)
             _currentdir = value;
         _velocity = value * speed * (_canMove ? 1 : 0);
     }
 
-    private void Interact(InputAction.CallbackContext context)
+    private void Interact(InputAction.CallbackContext context = default(InputAction.CallbackContext))
     {
         if (_targetInteractable == null)
             return;
         _targetInteractable.Interact();
     }
 
-    private void ThrowStar(InputAction.CallbackContext context)
+    private void StartCharge(InputAction.CallbackContext context = default(InputAction.CallbackContext))
+    {
+        if (!GameManager.instance.HaveStar())
+            return;
+        timeStartCharge = Time.time;
+        _canMove = false;
+    }
+
+    private void ThrowStar(InputAction.CallbackContext context = default(InputAction.CallbackContext))
     {
         if (!GameManager.instance.HaveStar())
             return;
@@ -164,10 +153,44 @@ public class Player : MonoBehaviour
         
     }
 
-    private void OnDrawGizmosSelected()
+    private void InteractMobile(bool value)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)_currentdir * interactionRange);
-        Gizmos.DrawWireSphere(transform.position, interactionRange);
+        if (value == true)
+            StartCharge();
+        else
+            ThrowStar();
     }
+
+    private void SetupControls()
+    {
+        PlayerControls controls = GameManager.instance.Controls;
+
+        controls.Enable();
+        controls.MainGameplay.Movements.performed += UpdateMove;
+        controls.MainGameplay.Movements.canceled += UpdateMove;
+
+        controls.MainGameplay.Interact.started += Interact;
+        controls.MainGameplay.Attack.performed += StartCharge;
+        controls.MainGameplay.Attack.canceled += ThrowStar;
+
+        MobileInputs mobileInputs = GameManager.instance.GetHUD().MobileInputs;
+
+        mobileInputs.onInteraction.AddListener((_) => Interact());
+        mobileInputs.onAttack.AddListener(InteractMobile);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerControls controls = GameManager.instance.Controls;
+
+
+        controls.MainGameplay.Movements.performed -= UpdateMove;
+        controls.MainGameplay.Movements.canceled -= UpdateMove;
+
+        controls.MainGameplay.Interact.started -= Interact;
+        controls.MainGameplay.Attack.performed -= StartCharge;
+        controls.MainGameplay.Attack.canceled -= ThrowStar;
+    }
+
+    #endregion
 }

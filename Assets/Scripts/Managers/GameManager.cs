@@ -7,6 +7,7 @@ public class GameManager : Manager<GameManager>
 {
     private int _deathCount = 0;
     private int _starCount = 0;
+    public bool isPhonePlay = false;
 
     public PlayerControls Controls = null;
     
@@ -51,7 +52,7 @@ public class GameManager : Manager<GameManager>
         }
         set
         {
-            GetHUD().SetDeathCount(value);
+            GetHUD()?.SetDeathCount(value);
             _deathCount = value;
         }
     }
