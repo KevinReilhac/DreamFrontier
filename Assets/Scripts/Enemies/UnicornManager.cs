@@ -5,7 +5,7 @@ using System.Linq;
 
 public class UnicornManager : Manager<UnicornManager>
 {
-    private const float BLINK_TIME = 1.5f;
+    private const float BLINK_TIME = 2f;
 
     private bool _blinkState = false;
     private List<Unicorn> _unicorns = null;
