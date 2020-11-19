@@ -20,19 +20,17 @@ public class UnicornManager : Manager<UnicornManager>
     {
         List<Unicorn> _blinkyUnicorns = (from x in _unicorns where x.IsBlink select x).ToList();
 
-        print(_blinkyUnicorns);
-
         if (_blinkyUnicorns.Count == 0)
             yield break;
         while (true)
         {
-            _blinkyUnicorns.ForEach(ToggleUnicornLight);
+            _blinkyUnicorns.ForEach(SetUnicornLight);
             yield return new WaitForSeconds(BLINK_TIME);
             _blinkState = !_blinkState;
         }
     }
 
-    private void ToggleUnicornLight(Unicorn unicorn)
+    private void SetUnicornLight(Unicorn unicorn)
     {
         if (!unicorn.IsStun)
             unicorn.SetCornLight(_blinkState);
