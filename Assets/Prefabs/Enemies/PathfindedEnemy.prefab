@@ -91,7 +91,7 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: 2.75
   rotationSpeed: 360
-  slowdownDistance: 0.3
+  slowdownDistance: 0
   pickNextWaypointDist: 1
   endReachedDistance: 0.44
   alwaysDrawGizmos: 1
@@ -134,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087998181633549601, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_InstanceId
-      value: -1277726
+      value: -278984
       objectReference: {fileID: 0}
     - target: {fileID: 5294316954344320569, guid: 121ee33a79364514e89ff79a6e681ba9, type: 3}
       propertyPath: m_RootOrder

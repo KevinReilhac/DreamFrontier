@@ -9,18 +9,18 @@ using Pathfinding;
 public class Unicorn : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] AnimMovements animMovement = null;
-    [SerializeField] Light2D cornLight = null;
+    [SerializeField] private AnimMovements animMovement = null;
+    [SerializeField] private Light2D cornLight = null;
     [SerializeField] private AIPath ai;
     [SerializeField] private Animator animator = null;
     [Header("Gameplay")]
-    [SerializeField] private bool isBlinking = false;
+    [SerializeField] private bool isBlink = false;
     [SerializeField] private float stunTime = 3f;
-    [SerializeField] [ShowIf("isBlinking")] private float blinkTime = 3f;
 
-    [SerializeField] [Dropdown("GetVectorStart")] [OnValueChanged("SetDefaultDirection")]
+    [SerializeField] [Dropdown("GetVectorStart")]
     private Vector2 defaultDirection = new Vector2(1, 0);
 
+    private bool _isStun = false;
 
     private DropdownList<Vector2> GetVectorStart()
     {
@@ -33,28 +33,15 @@ public class Unicorn : MonoBehaviour
         };
     }
 
-    private bool _isStun = false;
 
     private void Awake()
     {
         SetDefaultDirection();
-        if (isBlinking)
-            StartCoroutine(BlinkCoroutine());
     }
 
     private void SetDefaultDirection()
     {
         animMovement.SetDirection(defaultDirection);
-    }
-
-    private IEnumerator BlinkCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(blinkTime);
-            if (!_isStun)
-                cornLight.enabled = !cornLight.enabled;
-        }
     }
 
     public void Stun()
@@ -117,4 +104,18 @@ public class Unicorn : MonoBehaviour
         GameManager.instance.GetPlayer().Kill();
     }
 
+    public void SetCornLight(bool state)
+    {
+        cornLight.gameObject.SetActive(state);
+    }
+
+    public bool IsStun
+    {
+        get => _isStun;
+    }
+
+    public bool IsBlink
+    {
+        get => isBlink;
+    }
 }

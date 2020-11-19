@@ -22,7 +22,6 @@ public class MobileInputs : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-
     public void InteractDown()
     {
         onInteraction.Invoke(true);

@@ -34,7 +34,7 @@ public class AnimMovements : MonoBehaviour
     private void UpdateAnimator()
     {
         animator.SetBool("Idle", _velocity.magnitude < 0.3f);
-        if (_velocity.magnitude > 0.1f)
+        if (_velocity.magnitude > 0.3f)
         {
             animator.SetFloat("SpeedX", Mathf.Clamp(_velocity.x, -1, 1));
             animator.SetFloat("SpeedY", Mathf.Clamp(_velocity.y, -1, 1));

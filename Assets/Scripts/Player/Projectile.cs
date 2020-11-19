@@ -5,8 +5,6 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer = null;
-    [SerializeField] private TrailRenderer trailRenderer = null;
     [SerializeField] private ParticleSystem particles = null;
 
     private bool hasHit = false;

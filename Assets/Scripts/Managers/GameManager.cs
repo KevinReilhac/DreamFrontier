@@ -27,6 +27,11 @@ public class GameManager : Manager<GameManager>
         }
     }
 
+    private void Start()
+    {
+        UnicornManager.instance.Init();
+    }
+
     protected override void xAwake()
     {
     }
@@ -43,6 +48,12 @@ public class GameManager : Manager<GameManager>
 
     public Hud GetHUD() => GameObject.FindObjectOfType<Hud>();
     public CustomScenesManager GetSceneManager() => GameObject.FindObjectOfType<CustomScenesManager>();
+
+    public void OnLevelWasLoaded(int level)
+    {
+        StarCount = 0;
+        UnicornManager.instance.Init();
+    }
 
     public int DeathCount
     {
